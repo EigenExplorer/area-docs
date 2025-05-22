@@ -1,25 +1,43 @@
 ---
 title: 'Introduction'
-description: 'Get started with the Liquid AVS Token protocol'
+description: 'Get started with the Liquid AVS Token (LAT) protocol'
 icon: 'right'
 ---
 
 ## Welcome
 
-This section provides an in-depth guide to the LAT protocol for developers integrating, building on, or maintaining the LAT system. It covers core contract responsibilities, key APIs, architectural design, and usage patterns. This is the foundational reference for engineers working on protocol-level interactions.
+Area’s Liquid AVS Token (LAT) protocol is a decentralized, non-custodial liquid restaking system that enables users to directly restake assets into supported Autonomous Verifiable Services (AVSs).
 
-### Overview
+This section is your comprehensive guide to integrating with, building on, and maintaining the LAT system. It covers smart contract architecture, API interfaces, usage patterns, and developer best practices.
 
-LAT (Liquid AVS Token) is a tokenized representation of staked assets restaked into EigenLayer via a modular delegation system. The LAT system introduces a transparent, composable, and user-aligned model for liquid restaking.
+---
 
-Composable: LATs are ERC-20 tokens that represent positions restaked into specific AVSs.
+### What is LAT?
 
-Deterministic: Every LAT traces directly to its originating deposit and associated AVS.
+The Liquid AVS Token (LAT) is a tokenized representation of assets restaked through EigenLayer into specific AVSs via Area’s modular delegation system. LAT introduces a new asset class in the restaking ecosystem -- combining liquidity, programmability, and AVS-specific alignment
 
-Modular: StakerNodes delegate assets across strategies and can be dynamically created or upgraded.
+LAT is part of the **Direct Liquid Restaking** framework, providing a cleaner and more deterministic path from restaked capital to AVS utility.
 
-### System Flow
+#### Key Properties of LAT
 
-[User] → [LiquidToken] → [LiquidTokenManager] → [StakerNode] → [EigenLayer Strategy]
+- **Composable**: LATs are standard ERC-20 tokens representing restaked positions in individual AVSs. They can be integrated with DeFi protocols, transferred, or used in new financial primitives.
 
-Users deposit supported assets, receive LAT tokens, and those assets are delegated through a node infrastructure to the EigenLayer network.
+- **Deterministic**: Each LAT is traceable to its original deposit and target AVS, offering transparency and accountability for both stakers and AVSs.
+
+- **Modular**: The system is powered by *StakerNodes* —- autonomous agents that manage delegation strategies, staking flows, and upgrades across LAT positions.
+
+---
+
+### Next Steps
+
+<CardGroup cols={2}>
+<Card title='Explore the Contracts' icon='file-contract' href='/lat/introduction'>
+    Dive into the Smart Contracts section for a breakdown of LAT architecture and contract-level responsibilities.
+</Card>
+
+<Card title='Use the APIs' icon='webhook' href='/api-reference/introduction'>
+    Use the APIs to create LAT deposits and retrieve position data or performance metrics —- no smart contract code required.
+</Card>
+</CardGroup>
+
+Whether you're building a new AVS, integrating LATs into your dApp, or contributing to the protocol, this section will help you get started.

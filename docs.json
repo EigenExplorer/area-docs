@@ -58,20 +58,22 @@
                         "group": "Introduction",
                         "pages": [
                             "developers/introduction",
-                            "developers/support",
-                            "developers/errors"
+                            "developers/support"
                         ]
                     },
                     {
-                        "group": "LAT Smart Contracts",
+                        "group": "Smart Contracts",
                         "pages": [
-                            "developers/lat-contracts/core-contracts",
-                            "developers/lat-contracts/utility-contracts"
+                            "developers/smart-contracts/architecture",
+                            "developers/smart-contracts/core-contracts",
+                            "developers/smart-contracts/utility-contracts"
                         ]
                     },
                     {
                         "group": "API Reference",
                         "pages": [
+                            "developers/api-reference/introduction",
+                            "developers/api-reference/errors",
                             {
                                 "group": "Direct Restaking API",
                                 "icon": "coin-vertical",
