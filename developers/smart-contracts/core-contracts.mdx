@@ -1,0 +1,84 @@
+---
+title: 'LAT Core Contracts'
+description: 'Overview of the smart contracts powering the Liquid AVS Token protocol'
+icon: 'diamonds-4'
+---
+
+The LAT protocol is composed of a set of core smart contracts that coordinate user deposits, token issuance, restaking delegation, and interaction with EigenLayer. 
+
+Both users and the off-chain restaking manager interface with these contracts.
+
+## Core Contracts Overview
+
+| Contract               | Description                                                                                                                                                                                                  |
+|------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`LiquidToken`](https://github.com/EigenExplorer/liquid-avs-token/blob/dev/docs/core/LiquidToken.sol.md)         | ERC-20 compliant contract that handles user deposits and withdrawals. It mints LAT tokens representing liquid staked positions and manages share-based accounting.                                   |
+| [`LiquidTokenManager`](https://github.com/EigenExplorer/liquid-avs-token/blob/dev/docs/core/LiquidTokenManager.sol.md)    | Oversees the allocation of deposited assets across supported strategies. It interacts with `StakerNodes` and manages the addition/removal of supported assets.                                       |
+| [`StakerNodeCoordinator`](https://github.com/EigenExplorer/liquid-avs-token/blob/dev/docs/core/StakerNodeCoordinator.sol.md) | Factory and registry for all `StakerNode` instances. Maintains upgrade paths, manages permissions, and links node infrastructure to the broader protocol.                                             |
+| [`StakerNode`](https://github.com/EigenExplorer/liquid-avs-token/blob/dev/docs/core/StakerNode.sol.md)             | Contract representing an individual node that interacts with EigenLayer. It handles delegation, restaking, and withdrawal operations, while reporting back to the coordinator.                        |
+
+## Contract Details
+
+### `LiquidToken` 
+
+<Info>[View Full Contract Documentation on GitHub](https://github.com/EigenExplorer/liquid-avs-token/blob/dev/docs/core/LiquidToken.sol.md)</Info>
+
+The `LiquidToken` contract is the user-facing entry point of the LAT protocol. It:
+
+- Accepts deposits of supported assets
+- Mints LAT tokens based on exchange rates from the `TokenRegistry`
+- Tracks user balances via a share-based accounting system
+- Enables redemption of LAT for underlying assets
+- Integrates standard ERC-20 behavior (transfer, approve, etc.)
+
+Additional security features include:
+
+- **Access control** for critical functions
+- **Pausability** in case of system emergencies
+- **Reentrancy protection** to prevent attack vectors
+
+---
+
+### `LiquidTokenManager`
+
+<Info>[View Full Contract Documentation on GitHub](https://github.com/EigenExplorer/liquid-avs-token/blob/dev/docs/core/LiquidTokenManager.sol.md)</Info>
+
+The `LiquidTokenManager` orchestrates the flow of assets post-deposit. It:
+
+- Coordinates distribution of deposited assets across `StakerNodes`
+- Interfaces with the restaking manager for rebalancing decisions
+- Maintains the mapping between LAT-supported tokens and EigenLayer strategies
+- Provides public read functions for system-wide balance and configuration data
+
+This contract serves as the control plane for reallocation and system-wide governance logic.
+
+---
+
+### `StakerNode`
+
+<Info>[View Full Contract Documentation on GitHub](https://github.com/EigenExplorer/liquid-avs-token/blob/dev/docs/core/StakerNode.sol.md)</Info>
+
+Each `StakerNode` contract acts as a delegate node that:
+
+- Interacts directly with EigenLayer to restake capital
+- Submits deposits, handles delegation logic, and manages withdrawal requests
+- Tracks staking rewards attributable to its assigned capital
+- Supports upgradeability via the `StakerNodeCoordinator`
+
+StakerNodes are modular and independently upgradable, allowing for scalable deployment of restaked capital across strategies.
+
+
+--- 
+
+### `StakerNodeCoordinator`
+
+<Info>[View Full Contract Documentation on GitHub](https://github.com/EigenExplorer/liquid-avs-token/blob/dev/docs/core/StakerNodeCoordinator.sol.md)</Info>
+
+The `StakerNodeCoordinator` serves as the authoritative manager for all deployed `StakerNode` contracts. It:
+
+- Deploys and registers new `StakerNode` instances
+- Manages upgradability of existing nodes
+- Acts as a permissioned registry for contract role management
+- Ensures consistency and observability across the node infrastructure
+
+By centralizing the lifecycle management of nodes, this contract ensures operational cohesion across the LAT restaking network.

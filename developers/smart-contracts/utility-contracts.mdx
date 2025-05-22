@@ -1,0 +1,21 @@
+---
+title: 'Utility Contracts'
+description: 'Supporting contracts used by the Liquid AVS Token protocol'
+icon: 'asterisk'
+---
+
+The LAT protocol includes one utility contract that supports the operation of the core system. Utility contracts are not accessed directly by users or the restaking manager—instead, they exclusively serve core contracts.
+
+This utility contract plays a critical role in maintaining the accuracy and integrity of the LAT minting process by anchoring it to external market data.
+
+<Info>[View Full Contract Documentation on GitHub](https://github.com/EigenExplorer/liquid-avs-token/blob/dev/docs/utils/TokenRegistryOracle.sol.md)</Info>
+
+
+
+| Contract                                                                                                                 | Description                                                                                                                                                                                                 |
+|--------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`TokenRegistryOracle`](https://github.com/EigenExplorer/liquid-avs-token/blob/dev/docs/utils/TokenRegistryOracle.sol.md) | Supplies up-to-date price data for supported assets to the `TokenRegistry`. This ensures accurate token-to-share conversion during user deposits into `LiquidToken`, enabling fair LAT issuance.             |
+
+---
+
+

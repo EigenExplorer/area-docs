@@ -1,0 +1,70 @@
+---
+title: 'System Architecture'
+description: 'Architecture overview of the Liquid AVS Token (LAT) smart contracts'
+icon: 'shapes'
+---
+
+The Liquid AVS Token (LAT) protocol enables **direct restaking** through a modular and extensible smart contract system. It routes user deposits to Autonomous Verifiable Services (AVSs) via LAT issuance, rebalancing mechanisms, and staker node coordination -— without relying on centralized intermediaries.
+
+Below is a breakdown of the protocol architecture and core user flow:
+
+<Frame type='glass'>
+  <img src='/public/images/developer/smart-contracts/user-flow.png' alt='System Flow' />
+</Frame>
+
+---
+
+## User Entry: `LiquidToken`
+
+Users deposit supported tokens into the `LiquidToken` contract. Exchange rates are fetched from the `TokenRegistry`, which is updated by the `TokenRegistryOracle`. Based on these rates, `LiquidToken` mints LATs (Liquid AVS Tokens) that represent the user’s staked position.
+
+LATs can be transferred, traded, or redeemed by the user at any time, enabling liquidity and flexibility.
+
+## Restaking Infrastructure
+
+The `LiquidTokenManager` serves as the execution layer for restaking. 
+
+It:
+- Handles deposits and internal accounting
+- Coordinates token flows across the system
+- Interfaces with the `EE Re-staking Manager`
+
+The **EE Re-staking Manager** manages:
+
+- Rebalancing LAT-backed assets across multiple AVSs
+- Delegation of assets to staker nodes
+- Handling slashing, exits, or validator set changes
+
+This off-chain logic enables dynamic routing without compromising on-chain security guarantees.
+
+## Staker Nodes & Coordination
+
+Each `StakerNode` is a smart contract that holds a portion of the total delegated capital. These nodes:
+
+- Interact directly with EigenLayer strategies
+- Submit assets on behalf of LAT holders
+- Earn yield based on performance and AVS allocation
+
+The `Staker Node Coordinator` manages the entire set of nodes, routing deposits and rebalancing assets across them. It abstracts complex delegation logic and ensures optimal capital distribution.
+
+## Restaking on EigenLayer
+
+In the final step, assets held by each `StakerNode` are deposited into registered EigenLayer strategies. These strategies secure various AVSs and generate rewards that flow back to LAT holders.
+
+---
+
+## Summary Flow
+
+```plaintext
+User
+ ↓ deposits
+LiquidToken
+ ↓ mints LAT
+LiquidTokenManager
+ ↓ coordinates
+Staker Node Coordinator
+ ↓ routes
+Staker Nodes
+ ↓ delegate
+EigenLayer
+```
