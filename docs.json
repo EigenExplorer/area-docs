@@ -59,15 +59,11 @@
                         "pages": [
                             "developers/introduction",
                             "developers/support",
-                            "developers/pricing",
-                            "developers/rate-limit",
-                            "developers/errors",
-                            "developers/changelog",
-                            "developers/api-status"
+                            "developers/errors"
                         ]
                     },
                     {
-                        "group": "Area Smart Contracts",
+                        "group": "LAT Smart Contracts",
                         "pages": [
                             "developers/lat-contracts/core-contracts",
                             "developers/lat-contracts/utility-contracts"
@@ -75,10 +71,33 @@
                     },
                     {
                         "group": "API Reference",
-                        "openapi": {
-                            "source": "/developers/api-reference/openapi.json",
-                            "directory": "/developers/api-reference"
-                        }
+                        "pages": [
+                            {
+                                "group": "Direct Restaking API",
+                                "icon": "coin-vertical",
+                                "pages": [
+                                    "developers/api-reference/endpoint/lat/create-a-lat-deposit-transaction",
+                                    "developers/api-reference/endpoint/lat/simulate-a-lat-deposit-transaction"
+                                ]
+                            },
+                            {
+                                "group": "LAT Data API",
+                                "icon": "cubes-stacked",
+                                "pages": [
+                                    "developers/api-reference/endpoint/lat/retrieve-a-specific-lat",
+                                    "developers/api-reference/endpoint/lat/retrieve-all-lats-for-a-specific-avs",
+                                    "developers/api-reference/endpoint/lat/retrieve-all-liquid-avs-tokens-lats",
+                                    "developers/api-reference/endpoint/lat/retrieve-all-operators-delegated-to-in-the-area-lat-ecosystem",
+                                    "developers/api-reference/endpoint/lat/retrieve-all-supported-tokens-with-their-lats",
+                                    "developers/api-reference/endpoint/lat/retrieve-exchange-rates-for-a-lat-or-token",
+                                    "developers/api-reference/endpoint/lat/retrieve-fee-structure-for-a-specific-lat",
+                                    "developers/api-reference/endpoint/lat/retrieve-operator-details",
+                                    "developers/api-reference/endpoint/lat/retrieve-operators-for-a-lat",
+                                    "developers/api-reference/endpoint/lat/retrieve-tokens-supported-by-a-specific-lat",
+                                    "developers/api-reference/endpoint/metrics/retrieve-historical-aggregated-data-for-a-specific-lat"
+                                ]
+                            }
+                        ]
                     }
                 ]
             },
@@ -121,7 +140,7 @@
     },
     "api": {
         "mdx": {
-            "server": "https://api.eigenexplorer.com"
+            "server": "https://api.area.club"
         }
     },
     "background": {
@@ -132,12 +151,6 @@
         }
     },
     "navbar": {
-        "links": [
-            {
-                "label": "Developer Dashboard",
-                "href": "https://developer.eigenexplorer.com"
-            }
-        ],
         "primary": {
             "type": "button",
             "label": "Open App",
@@ -146,7 +159,7 @@
     },
     "footer": {
         "socials": {
-            "twitter": "https://twitter.com/eigenexplorer",
+            "twitter": "https://twitter.com/areadotcub",
             "telegram": "https://t.me/eigenexplorer",
             "discord": "https://discord.gg/3aTdnXgGNg",
             "github": "https://github.com/eigenexplorer"
