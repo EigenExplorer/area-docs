@@ -1,10 +1,43 @@
 ---
-title: Operator Delegation
-description: 'How Area manages operator delegation'
-icon: split
+title: Operator Selection  
+description: 'How Area manages operators and strategies'  
+icon: split  
 ---
 
-Area allows you to directly restake into an AVS by automatically managing the operator delegation. 
+Area’s restaking system is designed to **maximize directional exposure and rewards to an AVS**, while minimizing operator risk. We achieve this by **diversifying operator selection** and carefully managing how user deposits are allocated to AVS operators.
 
+## Operator Selection
+
+Area's restaking manager allocates user deposits into an AVS every 24 hours, following one of two policies depending on the AVS:
+
+- **Max APY Policy** — For reward-issuring AVSs, the system optimizes for maximum APY while maintaining fair exposure across top AVS operators:
+  
+  1. Identify the highest APY strategy within the AVS (`S1`).  
+    <Note>
+    Strategies are products offered by an AVS that require specific tasks to be performed. The APY of each strategy reflects the importance and difficulty of those tasks.
+    </Note>
+  2. Calculate how much additional stake (`M1`) can be allocated to S1 before its APY drops to match the second-highest strategy (`S2`).  
+  3. Allocate `M1` to `S1`.  
+  4. Repeat this process, balancing stake across `S1`, `S2`, `S3`, and so on, until all available funds are allocated.  
+
+
+
+- **Max Exposure Policy** — For AVSs not currently issuing rewards, stake is distributed **evenly across all eligible strategies**, providing broad exposure without APY considerations.
+
+## Operator Criteria
+
+The quality of Operators directly impacts both security and rewards. Area applies strict selection criteria to ensure only reputable and aligned Operators participate. Operators are evaluated using an absolute scoring system based on:
+
+1. **AVS Alignment (AVS Purity)**  
+   If an AVS enforces Unique Stake, Operators must have at least **75% of their Unique Stake TVL** allocated to that AVS’s approved Operator Set.
+
+2. **Strategy Participation**  
+   Operators must actively support at least the **top 5 APY strategies** at all times.
+
+3. **Reputation & TVL Requirements**  
+   Operators must maintain a minimum of **\$200M in TVL**. While TVL does not directly affect LAT returns, it serves as a reputation signal and helps reduce slashing risk.
+
+4. **Fee Adjustments**  
+   Operator fees for both AVS rewards and Programmatic Incentives are factored into their final score, ensuring users receive the best possible net returns.
 
 
