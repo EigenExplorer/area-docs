@@ -16,7 +16,7 @@
 		}
 	],
 	"paths": {
-		"/": {
+		"/lat": {
 			"get": {
 				"operationId": "getAllLats",
 				"summary": "Retrieve all Liquid AVS Tokens (LATs)",
@@ -637,7 +637,7 @@
 				}
 			}
 		},
-		"/assets": {
+		"/lat/assets": {
 			"get": {
 				"operationId": "getAllSupportedTokens",
 				"summary": "Retrieve all supported tokens with their LATs",
@@ -660,7 +660,7 @@
 														"type": "string",
 														"pattern": "^0x[a-fA-F0-9]{40}$",
 														"description": "Token contract address",
-														"example": "0x1d8b30cc38dba8abce1ac29ea27d9cfd05379a09"
+														"example": "0x8c1bed5b9a0928467c9b1341da1d7bd5e10b6549"
 													},
 													"tokenSymbol": {
 														"type": "string",
@@ -691,8 +691,8 @@
 																"latAddress": {
 																	"type": "string",
 																	"pattern": "^0x[a-fA-F0-9]{40}$",
-																	"description": "LAT contract address",
-																	"example": "0xaa4398a908cae395dff7f5d620e5899905b52723"
+																	"description": "LAT contract address (proxy)",
+																	"example": "0x94a2a0548681fda8d5e2ad5a8eeecd891e02a613"
 																},
 																"latName": {
 																	"type": "string",
@@ -751,7 +751,7 @@
 				}
 			}
 		},
-		"/operators": {
+		"/lat/operators": {
 			"get": {
 				"operationId": "getAllOperators",
 				"summary": "Retrieve all Operators delegated to in the Area LAT ecosystem",
@@ -771,7 +771,7 @@
 												"type": "string",
 												"pattern": "^0x[a-fA-F0-9]{40}$",
 												"description": "Operator address",
-												"example": "0x481748cb75f586ec774f2b2b2f900d8248ab2a3e"
+												"example": "0xdbed88d83176316fc46797b43adee927dc2ff2f5"
 											},
 											"description": "Array of Operator addresses"
 										}
@@ -805,7 +805,7 @@
 				}
 			}
 		},
-		"/operators/{address}": {
+		"/lat/operators/{address}": {
 			"get": {
 				"operationId": "getOperator",
 				"summary": "Retrieve Operator details",
@@ -820,7 +820,7 @@
 							"type": "string",
 							"pattern": "^0x[a-fA-F0-9]{40}$",
 							"description": "Address of the Operator",
-							"example": "0xa4e245c3a1cb2f0512a71b9cd908dca2f1641781"
+							"example": "0xdbed88d83176316fc46797b43adee927dc2ff2f5"
 						},
 						"required": true
 					},
@@ -1041,7 +1041,7 @@
 				}
 			}
 		},
-		"/avs/{address}": {
+		"/lat/avs/{address}": {
 			"get": {
 				"operationId": "getAvsLats",
 				"summary": "Retrieve all LATs for a specific AVS",
@@ -1056,7 +1056,7 @@
 							"type": "string",
 							"pattern": "^0x[a-fA-F0-9]{40}$",
 							"description": "Address of the AVS",
-							"example": "0x2344c0fe02ccd2b32155ca0ffcb1978a6d96a552"
+							"example": "0x870679e138bcdf293b7ff14dd44b70fc97e12fc0"
 						},
 						"required": true
 					}
@@ -1077,8 +1077,8 @@
 													"address": {
 														"type": "string",
 														"pattern": "^0x[a-fA-F0-9]{40}$",
-														"description": "LAT contract address",
-														"example": "0xaa4398a908cae395dff7f5d620e5899905b52723"
+														"description": "LAT contract address (proxy)",
+														"example": "0x94a2a0548681fda8d5e2ad5a8eeecd891e02a613"
 													},
 													"symbol": {
 														"type": "string",
@@ -1120,7 +1120,7 @@
 				}
 			}
 		},
-		"/{address}": {
+		"/lat/{address}": {
 			"get": {
 				"operationId": "getLat",
 				"summary": "Retrieve a specific LAT",
@@ -1130,11 +1130,12 @@
 					{
 						"in": "path",
 						"name": "address",
-						"description": "LAT contract address",
+						"description": "LAT contract address (proxy)",
 						"schema": {
 							"type": "string",
 							"pattern": "^0x[a-fA-F0-9]{40}$",
-							"description": "LAT contract address"
+							"description": "LAT contract address (proxy)",
+							"example": "0x94a2a0548681fda8d5e2ad5a8eeecd891e02a613"
 						},
 						"required": true
 					},
@@ -1647,7 +1648,7 @@
 				}
 			}
 		},
-		"/{address}/staker-nodes": {
+		"/lat/{address}/staker-nodes": {
 			"get": {
 				"operationId": "getLatStakerNodes",
 				"summary": "Retrieve staker nodes for a LAT",
@@ -1657,11 +1658,12 @@
 					{
 						"in": "path",
 						"name": "address",
-						"description": "The address of the LAT",
+						"description": "LAT contract address (proxy)",
 						"schema": {
 							"type": "string",
 							"pattern": "^0x[a-fA-F0-9]{40}$",
-							"description": "The address of the LAT"
+							"description": "LAT contract address (proxy)",
+							"example": "0x94a2a0548681fda8d5e2ad5a8eeecd891e02a613"
 						},
 						"required": true
 					}
@@ -1677,8 +1679,8 @@
 										"address": {
 											"type": "string",
 											"pattern": "^0x[a-fA-F0-9]{40}$",
-											"description": "The address of the LAT",
-											"example": "0xfd186d28c03a2847eaa9365847547466166d706b"
+											"description": "The address of the LAT (proxy)",
+											"example": "0x94a2a0548681fda8d5e2ad5a8eeecd891e02a613"
 										},
 										"maxNodes": {
 											"type": "number",
@@ -1822,7 +1824,7 @@
 				}
 			}
 		},
-		"/{address}/operators": {
+		"/lat/{address}/operators": {
 			"get": {
 				"operationId": "getLatOperators",
 				"summary": "Retrieve Operators for a LAT",
@@ -1832,12 +1834,12 @@
 					{
 						"in": "path",
 						"name": "address",
-						"description": "LAT contract address",
+						"description": "LAT contract address (proxy)",
 						"schema": {
 							"type": "string",
 							"pattern": "^0x[a-fA-F0-9]{40}$",
-							"description": "LAT contract address",
-							"example": "0x35f4f28a8d3ff20eed10e087e8f96ea2641e6aa1"
+							"description": "LAT contract address (proxy)",
+							"example": "0x94a2a0548681fda8d5e2ad5a8eeecd891e02a613"
 						},
 						"required": true
 					},
@@ -1871,7 +1873,7 @@
 														"type": "string",
 														"pattern": "^0x[a-fA-F0-9]{40}$",
 														"description": "Operator address",
-														"example": "0x481748cb75f586ec774f2b2b2f900d8248ab2a3e"
+														"example": "0xdbed88d83176316fc46797b43adee927dc2ff2f5"
 													},
 													"allocations": {
 														"type": "array",
@@ -1974,7 +1976,7 @@
 				}
 			}
 		},
-		"/{address}/tokens": {
+		"/lat/{address}/tokens": {
 			"get": {
 				"operationId": "getLatTokens",
 				"summary": "Retrieve tokens supported by a specific LAT",
@@ -1984,11 +1986,12 @@
 					{
 						"in": "path",
 						"name": "address",
-						"description": "LAT contract address",
+						"description": "LAT contract address (proxy)",
 						"schema": {
 							"type": "string",
 							"pattern": "^0x[a-fA-F0-9]{40}$",
-							"description": "LAT contract address"
+							"description": "LAT contract address (proxy)",
+							"example": "0x94a2a0548681fda8d5e2ad5a8eeecd891e02a613"
 						},
 						"required": true
 					}
@@ -2049,7 +2052,7 @@
 													"cmcId"
 												]
 											},
-											"description": "Array of LAT tokens supported by the given LAT address"
+											"description": "Array of tokens supported by the given LAT address"
 										}
 									},
 									"required": ["data"]
@@ -2081,7 +2084,7 @@
 				}
 			}
 		},
-		"/{address}/fees": {
+		"/lat/{address}/fees": {
 			"get": {
 				"operationId": "getLatFees",
 				"summary": "Retrieve fee structure for a specific LAT",
@@ -2091,12 +2094,12 @@
 					{
 						"in": "path",
 						"name": "address",
-						"description": "LAT contract address",
+						"description": "LAT contract address (proxy)",
 						"schema": {
 							"type": "string",
 							"pattern": "^0x[a-fA-F0-9]{40}$",
-							"description": "LAT contract address",
-							"example": "0x35f4f28a8d3ff20eed10e087e8f96ea2641e6aa1"
+							"description": "LAT contract address (proxy)",
+							"example": "0x94a2a0548681fda8d5e2ad5a8eeecd891e02a613"
 						},
 						"required": true
 					}
@@ -2161,7 +2164,7 @@
 				}
 			}
 		},
-		"/{address}/deposit": {
+		"/lat/{address}/deposit": {
 			"post": {
 				"operationId": "latDeposit",
 				"summary": "Create a LAT deposit transaction",
@@ -2171,12 +2174,12 @@
 					{
 						"in": "path",
 						"name": "address",
-						"description": "LAT contract address",
+						"description": "LAT contract address (proxy)",
 						"schema": {
 							"type": "string",
 							"pattern": "^0x[a-fA-F0-9]{40}$",
-							"description": "LAT contract address",
-							"example": "0xF2c15D5186E39F8899FE662cf795732A3108E28A"
+							"description": "LAT contract address (proxy)",
+							"example": "0x94a2a0548681fda8d5e2ad5a8eeecd891e02a613"
 						},
 						"required": true
 					}
@@ -2235,7 +2238,7 @@
 															"type": "string",
 															"pattern": "^0x[a-fA-F0-9]{40}$",
 															"description": "Target LAT address",
-															"example": "0xF2c15D5186E39F8899FE662cf795732A3108E28A"
+															"example": "0x94a2a0548681fda8d5e2ad5a8eeecd891e02a613"
 														},
 														"data": {
 															"type": "string",
@@ -2295,7 +2298,7 @@
 				}
 			}
 		},
-		"/{address}/simulate-deposit": {
+		"/lat/{address}/simulate-deposit": {
 			"post": {
 				"operationId": "simulateLatDeposit",
 				"summary": "Simulate a LAT deposit transaction",
@@ -2305,12 +2308,12 @@
 					{
 						"in": "path",
 						"name": "address",
-						"description": "LAT contract address",
+						"description": "LAT contract address (proxy)",
 						"schema": {
 							"type": "string",
 							"pattern": "^0x[a-fA-F0-9]{40}$",
-							"description": "LAT contract address",
-							"example": "0xF2c15D5186E39F8899FE662cf795732A3108E28A"
+							"description": "LAT contract address (proxy)",
+							"example": "0x94a2a0548681fda8d5e2ad5a8eeecd891e02a613"
 						},
 						"required": true
 					}
@@ -2473,7 +2476,7 @@
 				}
 			}
 		},
-		"/exchange/{address}": {
+		"/lat/exchange/{address}": {
 			"get": {
 				"operationId": "getExchangeRates",
 				"summary": "Retrieve exchange rates for a LAT or token",
@@ -2483,12 +2486,12 @@
 					{
 						"in": "path",
 						"name": "address",
-						"description": "Contract address of the token or LAT",
+						"description": "Contract address of the token or LAT (proxy)",
 						"schema": {
 							"type": "string",
 							"pattern": "^0x[a-fA-F0-9]{40}$",
-							"description": "Contract address of the token or LAT",
-							"example": "0xaa4398a908cae395dff7f5d620e5899905b52723"
+							"description": "Contract address of the token or LAT (proxy)",
+							"example": "0x94a2a0548681fda8d5e2ad5a8eeecd891e02a613"
 						},
 						"required": true
 					}
@@ -2504,8 +2507,8 @@
 										"address": {
 											"type": "string",
 											"pattern": "^0x[a-fA-F0-9]{40}$",
-											"description": "Contract address of the token or LAT",
-											"example": "0xaa4398a908cae395dff7f5d620e5899905b52723"
+											"description": "Contract address of the token or LAT (proxy)",
+											"example": "0x94a2a0548681fda8d5e2ad5a8eeecd891e02a613"
 										},
 										"exchangeRates": {
 											"type": "object",
@@ -2551,7 +2554,120 @@
 				}
 			}
 		},
-		"/historical/lat/{address}": {
+		"/metrics/deposits": {
+			"get": {
+				"operationId": "getAllDeposits",
+				"summary": "Retrieve all deposit transactions",
+				"description": "Fetches a list of all deposit transactions made by users, including details such as sender, receiver, asset, amount, shares received, and timestamps.",
+				"tags": ["Metrics"],
+				"responses": {
+					"200": {
+						"description": "A list of all deposit transactions",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"data": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"sender": {
+														"type": "string",
+														"description": "Address of the user who made the deposit",
+														"example": "0x2b1f2854b8ff4eccb691061a2f41b06a5155033b"
+													},
+													"receiver": {
+														"type": "string",
+														"description": "Address of the receiver of the deposit",
+														"example": "0x2b1f2854b8ff4eccb691061a2f41b06a5155033b"
+													},
+													"asset": {
+														"type": "string",
+														"description": "Address of the asset token deposited",
+														"example": "0xec53bf9167f50cdeb3ae105f56099aaab9061f83"
+													},
+													"amount": {
+														"type": "string",
+														"description": "Amount of tokens deposited (in wei)",
+														"example": "5000000000000000000"
+													},
+													"shares": {
+														"type": "string",
+														"description": "Amount of LAT (Liquid AVS Token) minted and received for the deposit (in wei)",
+														"example": "5000000000000000000"
+													},
+													"liquidTokenAddress": {
+														"type": "string",
+														"description": "Address of the LAT (Liquid AVS Token) issued for the deposit",
+														"example": "0x6a890d0da0867e65987704b14fcfb376281c2f14"
+													},
+													"createdAtBlock": {
+														"type": "number",
+														"description": "Block number at which the deposit was created",
+														"example": 22781212
+													},
+													"createdAt": {
+														"type": "string",
+														"description": "Timestamp when the deposit was created",
+														"example": "2025-06-25T11:39:59.000Z"
+													}
+												},
+												"required": [
+													"sender",
+													"receiver",
+													"asset",
+													"amount",
+													"shares",
+													"liquidTokenAddress",
+													"createdAtBlock",
+													"createdAt"
+												]
+											}
+										},
+										"meta": {
+											"type": "object",
+											"properties": {
+												"total": {
+													"type": "number",
+													"description": "Total number of records in the database",
+													"example": 30
+												}
+											},
+											"required": ["total"]
+										}
+									},
+									"required": ["data", "meta"]
+								}
+							}
+						}
+					},
+					"400": {
+						"$ref": "#/components/responses/400"
+					},
+					"401": {
+						"$ref": "#/components/responses/401"
+					},
+					"403": {
+						"$ref": "#/components/responses/403"
+					},
+					"404": {
+						"$ref": "#/components/responses/404"
+					},
+					"422": {
+						"$ref": "#/components/responses/422"
+					},
+					"429": {
+						"$ref": "#/components/responses/429"
+					},
+					"500": {
+						"$ref": "#/components/responses/500"
+					}
+				}
+			}
+		},
+		"/metrics/historical/lat/{address}": {
 			"get": {
 				"operationId": "getHistoricalLatAggregate",
 				"summary": "Retrieve historical aggregated data for a specific LAT",
@@ -2561,12 +2677,12 @@
 					{
 						"in": "path",
 						"name": "address",
-						"description": "LAT contract address",
+						"description": "LAT contract address (proxy)",
 						"schema": {
 							"type": "string",
 							"pattern": "^0x[a-fA-F0-9]{40}$",
-							"description": "LAT contract address",
-							"example": "0x35f4f28a8d3ff20eed10e087e8f96ea2641e6aa1"
+							"description": "LAT contract address (proxy)",
+							"example": "0x94a2a0548681fda8d5e2ad5a8eeecd891e02a613"
 						},
 						"required": true
 					},
