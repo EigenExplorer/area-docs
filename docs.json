@@ -86,9 +86,9 @@
                                 "group": "LAT Data API",
                                 "icon": "cubes-stacked",
                                 "pages": [
+                                    "developers/api-reference/endpoint/lat/retrieve-all-liquid-avs-tokens-lats",
                                     "developers/api-reference/endpoint/lat/retrieve-a-specific-lat",
                                     "developers/api-reference/endpoint/lat/retrieve-all-lats-for-a-specific-avs",
-                                    "developers/api-reference/endpoint/lat/retrieve-all-liquid-avs-tokens-lats",
                                     "developers/api-reference/endpoint/lat/retrieve-all-operators-delegated-to-in-the-area-lat-ecosystem",
                                     "developers/api-reference/endpoint/lat/retrieve-all-supported-tokens-with-their-lats",
                                     "developers/api-reference/endpoint/lat/retrieve-exchange-rates-for-a-lat-or-token",
@@ -96,6 +96,8 @@
                                     "developers/api-reference/endpoint/lat/retrieve-operator-details",
                                     "developers/api-reference/endpoint/lat/retrieve-operators-for-a-lat",
                                     "developers/api-reference/endpoint/lat/retrieve-tokens-supported-by-a-specific-lat",
+                                    "developers/api-reference/endpoint/lat/retrieve-staker-nodes-for-a-lat",
+                                    "developers/api-reference/endpoint/metrics/retrieve-all-deposit-transactions",
                                     "developers/api-reference/endpoint/metrics/retrieve-historical-aggregated-data-for-a-specific-lat"
                                 ]
                             }
